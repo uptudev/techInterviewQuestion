@@ -114,7 +114,7 @@ class Main
     }
 
     public static String GetShortestUniqueQualifier(CustomNode root, CustomNode target) {
-        HashSet<String> set = new HashSet<String>();
+        HashSet<String> set = new HashSet<>();
         populateHashset(set, root, target);
         String targetQualifier = getQualifier(target);
         Stack<Integer> targetIndices = getDelimiterIndices(targetQualifier);
@@ -135,9 +135,7 @@ class Main
 
     private static void populateHashset(HashSet<String> set, CustomNode root, CustomNode target) {
         if (root != target) {
-            for (var context: getValidContexts(getQualifier(root))) {
-                set.add(context);
-            }
+            set.addAll(getValidContexts(getQualifier(root)));
         }
 
         for (var child: root.Children) {
@@ -163,7 +161,7 @@ class Main
         StringBuilder context = new StringBuilder();
 
         for (int i = pathSegments.length - 1; i >= 0; i--) {
-            if (context.length() > 0) {
+            if (!context.isEmpty()) {
                 context.insert(0, "/");
             }
             context.insert(0, pathSegments[i]);
