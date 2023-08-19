@@ -1,0 +1,6 @@
+### Binaries don't real ###
+out/
+
+### IntelliJ stuff ###
+.idea/
+techInterviewQuestion.iml
